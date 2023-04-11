@@ -76,11 +76,8 @@ You type in what ingredients you have and the app will tell you recipes that you
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/allisonschiang/GourmetGuru/blob/main/quick_wireframe.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
 
 ## Schema 
 [This section will be completed in Unit 9]
