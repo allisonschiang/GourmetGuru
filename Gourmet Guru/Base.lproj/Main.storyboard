@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZCd-m6-fsB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZCd-m6-fsB">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Gourmet_Guru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Gourmet_Guru" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="sLM-jp-28R"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66" y="-2"/>
+            <point key="canvasLocation" x="2162.5954198473282" y="-540.14084507042253"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="7E3-QH-eve">
@@ -37,28 +40,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iy8-q0-VIq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="113"/>
+            <point key="canvasLocation" x="320" y="163"/>
         </scene>
-        <!--Item 1-->
+        <!--Recipe List-->
         <scene sceneID="Utx-vz-vYA">
             <objects>
-                <viewController id="fyD-GN-3SE" sceneMemberID="viewController">
+                <viewController id="fyD-GN-3SE" customClass="RecipeListViewController" customModule="Gourmet_Guru" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LzP-4d-UZO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fWz-CB-CJf">
+                                <rect key="frame" x="12" y="103" width="369" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnN-xg-l40">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="uai-3Q-KBF">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sdU-L8-xct">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vZs-OB-7Qw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fWz-CB-CJf" firstAttribute="top" secondItem="vZs-OB-7Qw" secondAttribute="top" id="Ebk-9D-Lvu"/>
+                            <constraint firstItem="vZs-OB-7Qw" firstAttribute="trailing" secondItem="fWz-CB-CJf" secondAttribute="trailing" constant="12" id="RmU-Hv-GwR"/>
+                            <constraint firstItem="vZs-OB-7Qw" firstAttribute="bottom" secondItem="fWz-CB-CJf" secondAttribute="bottom" id="ckZ-NN-5SF"/>
+                            <constraint firstItem="fWz-CB-CJf" firstAttribute="leading" secondItem="vZs-OB-7Qw" secondAttribute="leading" constant="12" id="fXH-JF-Ltl"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Ndu-qu-2mC"/>
+                    <navigationItem key="navigationItem" title="Recipe List" id="iXG-lX-i0Y"/>
+                    <connections>
+                        <outlet property="collectionView" destination="fWz-CB-CJf" id="GCV-To-wPT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoF-Pp-hgu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="-494"/>
+            <point key="canvasLocation" x="1246.5648854961833" y="-540.14084507042253"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="M6e-Lg-LxV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A7E-CU-HcL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="ZCd-m6-fsB" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ikb-0d-fKi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
@@ -66,15 +99,36 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="fyD-GN-3SE" kind="relationship" relationship="viewControllers" id="H50-Cx-dje"/>
+                        <segue destination="JFn-vN-2fh" kind="relationship" relationship="viewControllers" id="H50-Cx-dje"/>
                         <segue destination="2Nx-Zx-6kW" kind="relationship" relationship="viewControllers" id="oVP-fV-ay4"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A7E-CU-HcL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-360" y="-191"/>
+            <point key="canvasLocation" x="-840" y="-187"/>
+        </scene>
+        <!--Recipe List-->
+        <scene sceneID="OWe-B9-XPG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JFn-vN-2fh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Recipe List" image="list.bullet.clipboard.fill" catalog="system" id="Ndu-qu-2mC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ciH-Hp-RRB">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fyD-GN-3SE" kind="relationship" relationship="rootViewController" id="Q5R-TJ-zHD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YC6-Lt-rks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319.84732824427482" y="-540.14084507042253"/>
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet.clipboard.fill" catalog="system" width="103" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
