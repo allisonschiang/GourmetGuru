@@ -23,8 +23,8 @@ class RecipeListCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configure(foodTitle: String, foodTime: Int, foodImage: String, foodDescription: String) {
-        self.foodImage.image = UIImage(systemName: foodImage)
+    func configure(foodTitle: String, foodTime: Int16, foodImage: UIImage, foodDescription: String) {
+        self.foodImage.image = foodImage
         self.foodTitle.text = foodTitle
         self.foodTime.text = String(foodTime)
         self.foodDescription.text = foodDescription
