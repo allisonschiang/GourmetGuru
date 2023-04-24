@@ -28,20 +28,25 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-PD-kDH" userLabel="ImageView">
                                                         <rect key="frame" x="0.0" y="0.0" width="363" height="266.33333333333331"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-vq-mDR">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-vq-mDR">
                                                                 <rect key="frame" x="0.0" y="-1" width="363" height="230.66666666666669"/>
-                                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="230" id="AEG-Q7-bJh"/>
                                                                     <constraint firstAttribute="width" constant="363" id="W2T-zE-TF4"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aNJ-TF-QZT" userLabel="ButtonView">
                                                                 <rect key="frame" x="0.0" y="232" width="363" height="34.333333333333314"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcZ-ub-BRO">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcZ-ub-BRO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="104" height="34.333333333333336"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="34.329999999999998" id="XTg-o5-20e"/>
@@ -52,10 +57,13 @@
                                                                             <action selector="didTappedAdd:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="u7l-e3-Kcn"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqD-Zz-B6J">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqD-Zz-B6J">
                                                                         <rect key="frame" x="298.66666666666669" y="0.0" width="64.333333333333314" height="34.333333333333336"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                                                        <connections>
+                                                                            <action selector="didTappedDone:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WDG-9W-r3d"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -68,16 +76,31 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="363" height="62"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to add name" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ia4-s5-K3w">
-                                                                        <rect key="frame" x="82.333333333333329" y="0.0" width="198.66666666666669" height="35.333333333333336"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="35.333333333333336"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to add cooking time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p3z-Mt-JBt">
-                                                                        <rect key="frame" x="104.00000000000001" y="43.333333333333371" width="155.33333333333337" height="18.666666666666671"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="kWo-6w-3B4" userLabel="Cooking time">
+                                                                        <rect key="frame" x="148" y="43.333333333333371" width="67.333333333333314" height="18.666666666666671"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p3z-Mt-JBt">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="9" height="18.666666666666668"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                                            </textField>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOu-Eo-vwb">
+                                                                                <rect key="frame" x="16.000000000000004" y="0.66666666666662877" width="51.333333333333343" height="17"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="ia4-s5-K3w" secondAttribute="trailing" id="AGL-sy-haY"/>
+                                                                    <constraint firstItem="ia4-s5-K3w" firstAttribute="leading" secondItem="PkH-zs-9ZY" secondAttribute="leading" id="tKG-jB-5q3"/>
+                                                                </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="qn5-Yc-RbT" userLabel="Detail Stack">
                                                                 <rect key="frame" x="0.0" y="117" width="363" height="272"/>
@@ -97,6 +120,12 @@
                                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                        <integer key="value" value="15"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </textView>
                                                                         </subviews>
                                                                     </stackView>
@@ -115,6 +144,12 @@
                                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                        <integer key="value" value="15"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </textView>
                                                                         </subviews>
                                                                     </stackView>
@@ -133,6 +168,12 @@
                                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                        <integer key="value" value="15"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </textView>
                                                                         </subviews>
                                                                     </stackView>
@@ -186,7 +227,9 @@
                         <outlet property="ImageBut" destination="YcO-vq-mDR" id="NyL-s1-W6V"/>
                         <outlet property="Scroller" destination="2cO-9U-ILF" id="4wW-JN-ZhO"/>
                         <outlet property="botBox" destination="4sR-iE-HyG" id="7f0-RY-SEa"/>
+                        <outlet property="cookingTime" destination="p3z-Mt-JBt" id="VWc-9F-8Ta"/>
                         <outlet property="middleBox" destination="ULw-Fw-Gwk" id="FfZ-ZG-7QZ"/>
+                        <outlet property="recipeTitle" destination="ia4-s5-K3w" id="R9X-9I-jHh"/>
                         <outlet property="topBox" destination="5lg-9G-qtl" id="Suv-4P-IpU"/>
                     </connections>
                 </viewController>

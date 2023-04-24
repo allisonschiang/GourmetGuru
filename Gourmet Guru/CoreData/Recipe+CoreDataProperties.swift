@@ -19,6 +19,8 @@ extension Recipe {
     @NSManaged public var title: String?
     @NSManaged public var time: Int16
     @NSManaged public var foodDescription: String?
+    @NSManaged public var ingredients: String?
+    @NSManaged public var directions: String?
     @NSManaged public var image: Data?
 
 }

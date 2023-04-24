@@ -11,15 +11,20 @@ import PhotosUI
 
 class RecipeCreateViewController: UIViewController, UITextViewDelegate {
 
-    @IBOutlet weak var Scroller: UIScrollView!
-    @IBOutlet weak var topBox: UITextView!
-    @IBOutlet weak var middleBox: UITextView!
-    @IBOutlet weak var botBox: UITextView!
+    @IBOutlet weak var recipeTitle: UITextField!
+    @IBOutlet weak var cookingTime: UITextField!
+    @IBOutlet weak var Scroller: UIScrollView!//refers to scrolling view
+    @IBOutlet weak var topBox: UITextView!//description
+    @IBOutlet weak var middleBox: UITextView!//ingredients
+    @IBOutlet weak var botBox: UITextView!//directions
     @IBOutlet weak var ImageBut: UIImageView!
+    
+    let cdm = CoreDataManager()
     
     
     var ScrollerHeight: Int = 0//getting starter height of scroller
     var botBoxStart: Int = 0 //getting the starter distance from the bottom of the box to bot of scroller
+    var imageEmpty: Bool = true//a value to keep track whether or not the image has been changed
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +36,13 @@ class RecipeCreateViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    //This is a function that detects whether or not any of the UI text
+    //views have changed, that includes adding or removing text
+    //for our purposes this is done to see whether or not the bottom(directions) UI text view has gone off screen
+    //if it has gone off screen it fixes the screen size and if
+    //there is too much white space from removing alot of text then it will
+    //reduce the screen size
     func textViewDidChange(_ textView: UITextView) {
-        // This function will be called whenever the text in any of the UITextViews is changed
-        // You can add your desired functionality here, like printing a message
         // Calculate the bottom position of the botBox relative to the Scroller
                 let botBoxBottom = botBox.convert(botBox.bounds, to: Scroller).maxY
                 let botBoxint = Int(botBoxBottom)
@@ -56,6 +65,61 @@ class RecipeCreateViewController: UIViewController, UITextViewDelegate {
                         }
                     }
                 }
+    }
+    
+    
+    @IBAction func didTappedDone(_ sender: Any) {
+        var title: String = ""//title for alert controller and I must add "" to get around an error but it will never actually be empty
+        var message: String = ""//body for alert controller and same as above ^^^
+        var showAlert: Bool = false//whether or not we even show the alert
+        var alertController: UIAlertController?
+        
+        if(imageEmpty){//is image empty?
+            title = "Image Empty"
+            message = "No image was select, please go back and select an image."
+            showAlert = true
+        }
+        else if(recipeTitle.text == nil){//is title empty?
+            title = "Title Empty"
+            message = "No recipe title, please go back and name the recipe."
+            showAlert = true
+        }
+        else if(cookingTime.text == nil){//do we have a cooking time?
+            title = "Cooking Time Empty"
+            message = "No cooking time indicated, please go back and fill out the cooking time"
+            showAlert = true
+        }
+        else if(topBox.text.isEmpty){//do we have a descriptiion?
+            title = "Description Empty"
+            message = "No description filled out, please go back and make a description for the recipe"
+            showAlert = true
+        }
+        else if(middleBox.text.isEmpty){//do we have ingredients?
+            title = "Ingredients Empty"
+            message = "No ingredients indicated, please go back and add ingredients for the recipe"
+            showAlert = true
+        }
+        else if(botBox.text.isEmpty){//do we have directions?
+            title = "Directions Empty"
+            message = "No directions listed, please go back and add directions for the recipe"
+            showAlert = true
+        }
+        //Basically if any of our fields are nil, we show a custom alert to let the user know what they need to fill out
+        if(showAlert){
+            alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: "OK", style: .default){_ in
+                alertController?.dismiss(animated: true, completion: nil)
+            }
+            alertController?.addAction(dismissAction)
+            present(alertController!, animated: true, completion: nil)
+            return
+        }
+        
+        //if none of our fields are empty, we go ahead and add the recipe to the core data using our CoreDataManager
+        //also there is alot of force unwrapping, but since I did those checks above, we should be good
+        let timeZ = Int16(cookingTime.text!)! //Bunch of bullshit to convert to Int16, basically just spam hit 'fix'
+        cdm.addRecipe(title: recipeTitle.text!, time: timeZ, foodDescription: topBox.text!, ingredients: middleBox.text!, directions: botBox.text!, image: ImageBut.image!)
+        self.dismiss(animated: true)//dismiss once we have finished
     }
     
         
@@ -170,6 +234,7 @@ extension RecipeCreateViewController: PHPickerViewControllerDelegate{
                         self?.ImageBut.image = image
                     }
                 }
+        imageEmpty = false //once the image has been selected we go ahead and indicate it has been picked for error handling
     }
     
     
