@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2162.5954198473282" y="-540.14084507042253"/>
+            <point key="canvasLocation" x="2721" y="-69"/>
         </scene>
         <!--Recipe List-->
         <scene sceneID="Utx-vz-vYA">
@@ -64,7 +64,13 @@
                             <constraint firstItem="fWz-CB-CJf" firstAttribute="leading" secondItem="vZs-OB-7Qw" secondAttribute="leading" constant="12" id="fXH-JF-Ltl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipe List" id="iXG-lX-i0Y"/>
+                    <navigationItem key="navigationItem" title="Recipe List" id="iXG-lX-i0Y">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="evu-oJ-Ppg">
+                            <connections>
+                                <segue destination="6Io-6j-JME" kind="show" id="2cQ-VY-Wxv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="fWz-CB-CJf" id="GCV-To-wPT"/>
                     </connections>
@@ -72,6 +78,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoF-Pp-hgu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1246.5648854961833" y="-540.14084507042253"/>
+        </scene>
+        <!--second-->
+        <scene sceneID="NVf-Sc-uCP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Second" referencedIdentifier="second" id="6Io-6j-JME" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NLx-oR-buA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="szu-9f-FLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639" y="-643"/>
         </scene>
         <!--Recipe List-->
         <scene sceneID="OWe-B9-XPG">
@@ -95,6 +111,7 @@
     </scenes>
     <resources>
         <image name="list.bullet.clipboard.fill" catalog="system" width="103" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

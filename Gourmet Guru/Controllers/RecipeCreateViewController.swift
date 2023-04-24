@@ -44,27 +44,27 @@ class RecipeCreateViewController: UIViewController, UITextViewDelegate {
     //reduce the screen size
     func textViewDidChange(_ textView: UITextView) {
         // Calculate the bottom position of the botBox relative to the Scroller
-                let botBoxBottom = botBox.convert(botBox.bounds, to: Scroller).maxY
-                let botBoxint = Int(botBoxBottom)
-                // Calculate the height of the Scroller
-                let scrollerHeight = ScrollerHeight
-                // Check if the botBox has gone off the screen
-                if botBoxint > scrollerHeight {
-                    let offScreenDistance = botBoxint - scrollerHeight
-                    
-                    Scroller.contentSize.height = Scroller.contentSize.height + CGFloat(offScreenDistance)
-                    
+        let botBoxBottom = botBox.convert(botBox.bounds, to: Scroller).maxY
+        let botBoxint = Int(botBoxBottom)
+        // Calculate the height of the Scroller
+        let scrollerHeight = ScrollerHeight
+        // Check if the botBox has gone off the screen
+        if botBoxint > scrollerHeight {
+            let offScreenDistance = botBoxint - scrollerHeight
+            
+            Scroller.contentSize.height = Scroller.contentSize.height + CGFloat(offScreenDistance)
+            
+            ScrollerHeight = Int(Scroller.contentSize.height)
+        } else {
+            if(botBoxint < scrollerHeight){
+                let offset = scrollerHeight - botBoxint
+                let over = abs(botBoxStart - botBoxint)
+                if offset>botBoxStart{
+                    Scroller.contentSize.height = Scroller.contentSize.height - CGFloat(over)
                     ScrollerHeight = Int(Scroller.contentSize.height)
-                } else {
-                    if(botBoxint < scrollerHeight){
-                        let offset = scrollerHeight - botBoxint
-                        let over = abs(botBoxStart - botBoxint)
-                        if offset>botBoxStart{
-                            Scroller.contentSize.height = Scroller.contentSize.height - CGFloat(over)
-                            ScrollerHeight = Int(Scroller.contentSize.height)
-                        }
-                    }
                 }
+            }
+        }
     }
     
     
@@ -119,10 +119,8 @@ class RecipeCreateViewController: UIViewController, UITextViewDelegate {
         //also there is alot of force unwrapping, but since I did those checks above, we should be good
         let timeZ = Int16(cookingTime.text!)! //Bunch of bullshit to convert to Int16, basically just spam hit 'fix'
         cdm.addRecipe(title: recipeTitle.text!, time: timeZ, foodDescription: topBox.text!, ingredients: middleBox.text!, directions: botBox.text!, image: ImageBut.image!)
-        self.dismiss(animated: true)//dismiss once we have finished
+        navigationController?.popViewController(animated: true)
     }
-    
-        
     
     @IBAction func didTappedAdd(_ sender: Any) {
         if PHPhotoLibrary.authorizationStatus(for: .readWrite) != .authorized {

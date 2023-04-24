@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol updater: AnyObject {
+    func update(view: UICollectionView)
+}
+
 class RecipeListViewController: UIViewController {
     
     static let reuseIdentifier = "cell"
@@ -23,12 +27,23 @@ class RecipeListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        // Sample data to add to core data // NOTE: It will create a new item every time the app is launched
-        //AppDelegate.sharedAppDelegate.coreDataManager.addRecipe(title: "Pizza", time: 25, foodDescription: "Most people like pizza. People who don't are weird. Pizza is good.", image: UIImage(systemName: "heart") ?? UIImage()) // You can change this data and uncomment it to add a new item
-        getRecipes()
-        collectionView.reloadData() // Reload with the new data
+        reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        reloadData()
     }
 
+    // Reload the new data
+    func reloadData() {
+        getRecipes()
+        collectionView.reloadData()
+    }
 }
 
 extension RecipeListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -40,7 +55,7 @@ extension RecipeListViewController: UICollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeListViewController.reuseIdentifier, for: indexPath) as! RecipeListCollectionViewCell
         let recipe = recipesArr[indexPath.row]
         let title = recipe.title ?? ""
-        let time = recipe.time 
+        let time = recipe.time
         let foodDescription = recipe.foodDescription ?? ""
         let image = recipe.image
         cell.configure(foodTitle: title, foodTime: time, foodImage: UIImage(data: image!) ?? UIImage(), foodDescription: foodDescription)

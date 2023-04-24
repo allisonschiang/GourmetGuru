@@ -26,7 +26,7 @@ class RecipeListCollectionViewCell: UICollectionViewCell {
     func configure(foodTitle: String, foodTime: Int16, foodImage: UIImage, foodDescription: String) {
         self.foodImage.image = foodImage
         self.foodTitle.text = foodTitle
-        self.foodTime.text = String(foodTime)
+        self.foodTime.text = String(foodTime) + " minutes"
         self.foodDescription.text = foodDescription
     }
 
