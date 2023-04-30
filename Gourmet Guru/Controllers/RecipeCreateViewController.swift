@@ -79,12 +79,12 @@ class RecipeCreateViewController: UIViewController, UITextViewDelegate {
             message = "No image was select, please go back and select an image."
             showAlert = true
         }
-        else if(recipeTitle.text == nil){//is title empty?
+        else if(recipeTitle.text == ""){//is title empty?
             title = "Title Empty"
             message = "No recipe title, please go back and name the recipe."
             showAlert = true
         }
-        else if(cookingTime.text == nil){//do we have a cooking time?
+        else if(cookingTime.text == ""){//do we have a cooking time?
             title = "Cooking Time Empty"
             message = "No cooking time indicated, please go back and fill out the cooking time"
             showAlert = true
