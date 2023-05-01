@@ -71,28 +71,31 @@ extension RecipeListViewController: UICollectionViewDataSource, UICollectionView
         let objectID = recipesArr[indexPath.row]
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController {
             vc.recipeObjectID = objectID
-    }
-    
-    func getRecipes() {
-        let recipesRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        do {
-            let context = AppDelegate.sharedAppDelegate.coreDataManager.managedContext
-            let recipes = try context.fetch(recipesRequest)
-            recipesArr = recipes
-        } catch {
-            print(error.localizedDescription)
+            present(vc, animated: true, completion: nil)
         }
     }
-}
+        
+    func getRecipes() {
+            let recipesRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+            do {
+                let context = AppDelegate.sharedAppDelegate.coreDataManager.managedContext
+                let recipes = try context.fetch(recipesRequest)
+                recipesArr = recipes
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    extension RecipeListViewController: UICollectionViewDelegateFlowLayout {
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 100, height: 200)
+        }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return sectioningSet
+        }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return sectioningSet.left
+        }
+    }
 
-extension RecipeListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 200)
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectioningSet
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectioningSet.left
-    }
-}
