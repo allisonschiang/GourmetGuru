@@ -82,7 +82,7 @@ You type in what ingredients you have and the app will tell you recipes that you
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+<img src="https://github.com/allisonschiang/GourmetGuru/blob/main/models.png" width=600>
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
