@@ -67,9 +67,10 @@ extension RecipeListViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController {
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        
+        let objectID = recipesArr[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController {
+            vc.recipeObjectID = objectID
     }
     
     func getRecipes() {
