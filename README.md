@@ -42,8 +42,9 @@ This app sets out to allow allow users to throw away their cookbook! Users will 
    * Users should be able to see preview of recipe with name and cooktime
    * Users should be able to click on recipe
 * Recipe Content Screen
-   * User should be able to see recipe name, ingredients, and information
-   * User should be able to delete recipe
+   * User should be able to see recipe name 
+   * User should be able to see ingredients
+   * User should be able to see directions
 * Creation Screen
    * User should be able to type into textbox
    * User should be able to save text
