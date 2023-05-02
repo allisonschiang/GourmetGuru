@@ -17,6 +17,7 @@ class ContentViewController: UIViewController, UITextViewDelegate {
     
     
 
+    @IBOutlet weak var Scroller: UIScrollView!
     @IBOutlet weak var ImageBut: UIImageView!
     @IBOutlet weak var donebutton: UIButton!
     
@@ -30,10 +31,8 @@ class ContentViewController: UIViewController, UITextViewDelegate {
     
     let cdm = CoreDataManager()
     var recipe:String?
+    var ScrollerHeight: Int = 0
     
-    var ScrollerHeight: Int = 0//getting starter height of scroller
-    var botBoxStart: Int = 0 //getting the starter distance from the bottom of the box to bot of scroller
-    var imageEmpty: Bool = true//a value to keep track whether or not the image has been changed
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeDetails" {
@@ -50,7 +49,7 @@ class ContentViewController: UIViewController, UITextViewDelegate {
         //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         //let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
         //fetchRequest.predicate = NSPredicate(format: "SELF == %@", recipeObjectID!)
-        
+        ScrollerHeight = Int(Scroller.bounds.height)
         do {
             //let recipe = try context.fetch(fetchRequest).first
             let recipe = recipeObjectID
@@ -67,13 +66,32 @@ class ContentViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-
-        
-        //topBox.delegate = self
-       // middleBox.delegate = self
-        //botBox.delegate = self
-        //ScrollerHeight = Int(Scroller.bounds.height)
-        //botBoxStart = ScrollerHeight - Int(botBox.convert(botBox.bounds, to: Scroller).maxY)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getScreenSize()
+    }
+    
+    //quick function to make sure view will allow user to scroll through everything
+    func getScreenSize(){
+        print("Enter Functon")
+        let recipeDirectionBottom = recipedirections.convert(recipedirections.bounds, to: Scroller).maxY
+        let recipeDirectionint = Int(recipeDirectionBottom)
+        let scrollerHeight = ScrollerHeight
+        print (recipeDirectionint)
+        print(scrollerHeight)
+        if recipeDirectionint > scrollerHeight {
+            let offScreenDistance = recipeDirectionint - scrollerHeight
+            print("Off Screen Distance is \(offScreenDistance)")
+            Scroller.contentSize.height = Scroller.contentSize.height + CGFloat(offScreenDistance + 20)
+            
+            ScrollerHeight = Int(Scroller.contentSize.height)
+            print("New scroll size is \(ScrollerHeight)")
+        }
+    }
+    @IBAction func didTappedDone(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
         
         
     
