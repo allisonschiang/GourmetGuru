@@ -10,7 +10,7 @@
 * Click this video to be directed to the voiced demo!
 [<img src="https://github.com/allisonschiang/GourmetGuru/blob/main/youtubeScreenShot.png" width="50%">](https://www.youtube.com/watch?v=Kt487pmlbyo "Video Demo Walkthrough")
 * Here is just a quick gif walkthrough as well
-<img src='https://github.com/allisonschiang/GourmetGuru/blob/main/WalkthroughGif.gif' title='Video Walkthrough' width='50%' alt='Video Walkthrough' />
+<img src='https://github.com/allisonschiang/GourmetGuru/blob/main/WalkthroughGif.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 ### Description
