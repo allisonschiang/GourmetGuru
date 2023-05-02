@@ -8,7 +8,7 @@
 
 ## Overview
 
-[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=Kt487pmlbyo "Video Demo Walkthrough")
+[<img src="https://github.com/allisonschiang/GourmetGuru/blob/main/youtubeScreenShot.png" width="50%">](https://www.youtube.com/watch?v=Kt487pmlbyo "Video Demo Walkthrough")
 
 
 ### Description
