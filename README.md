@@ -70,7 +70,7 @@ This app sets out to allow allow users to throw away their cookbook! Users will 
     => Recipe Library (after finishing creation)
 
 ## Wireframes
-<img src="https://github.com/allisonschiang/GourmetGuru/blob/main/quick_wireframe.png" width=600>
+<img src="https://github.com/allisonschiang/GourmetGuru/blob/main/wireframeFIN.png" width=600>
 
 
 ## Schema 
