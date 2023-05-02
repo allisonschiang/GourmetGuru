@@ -7,6 +7,10 @@
 4. [Schema](#Schema)
 
 ## Overview
+
+[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=Kt487pmlbyo "Video Demo Walkthrough")
+
+
 ### Description
 This app sets out to allow allow users to throw away their cookbook! Users will open the app to all of their recipes displayed to them, and in a few easy clicks they can add any recipe their heart desires!
 
